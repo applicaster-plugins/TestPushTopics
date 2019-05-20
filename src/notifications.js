@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { NativeModules, AsyncStorage } from 'react-native';
 import { compose, concat, without } from 'ramda';
 
