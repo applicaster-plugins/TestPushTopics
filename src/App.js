@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import { concat, without } from 'ramda';
 import { SafeText as Text } from '@applicaster/london-rn-components';
 import {
   getRegisteredTags,
@@ -59,8 +58,6 @@ class App extends Component {
 
   async getRegisteredTagsList() {
     const subscribedTopics = await getRegisteredTags().catch(err => {
-      console.log(err);
-
       this.setState({ err: err.message });
     });
 
@@ -91,7 +88,7 @@ class App extends Component {
         </FullScreenCentered>
       );
     }
-    if (!topicGroups) {
+    if (!topicGroups || !subscribedTopics) {
       return <LoadingScreen />;
     }
     return (
