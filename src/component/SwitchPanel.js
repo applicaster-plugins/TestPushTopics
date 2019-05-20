@@ -1,5 +1,11 @@
 import React from 'react';
-import { View, Switch, StyleSheet, ViewPropTypes } from 'react-native';
+import {
+  View,
+  Switch,
+  StyleSheet,
+  ViewPropTypes,
+  Platform
+} from 'react-native';
 import { SafeText as Text } from '@applicaster/london-rn-components';
 import PropTypes from 'prop-types';
 
@@ -51,6 +57,7 @@ const SwitchPanel = (
       <Text style={styles.name}>{name}</Text>
       <Switch
         onTintColor={'rgb(222, 20, 10)'}
+        thumbTintColor={Platform.OS === 'android' ? 'white' : null}
         style={styles.switch}
         value={switchStatus}
         disabled={disabled !== undefined ? disabled : !globalPush}
