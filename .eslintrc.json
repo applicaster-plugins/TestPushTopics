@@ -1,0 +1,33 @@
+{
+  "plugins": ["babel", "react", "react-native"],
+  "extends": ["plugin:react/recommended", "airbnb-base", "prettier"],
+  "globals": {
+    "jest": true,
+    "expect": true,
+    "__DEV__": false
+  },
+  "rules": {
+    "class-methods-use-this": "off",
+    "camelcase": "off",
+    "no-nested-ternary": "off",
+    "import/prefer-default-export": "off",
+    "consistent-return": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "jest": true
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".android.js", ".ios.js"]
+      }
+    }
+  }
+}

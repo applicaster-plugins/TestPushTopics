@@ -1,0 +1,75 @@
+defaults: &defaults
+  working_directory: ~/AMSNotificationsControlCenter-RN
+  docker:
+    - image: applicaster/zapp-node:0.4
+
+persisted_folders: &persisted_folders
+  root: ~/
+  paths:
+    - AMSNotificationsControlCenter-RN/*
+
+version: 2
+jobs:
+  build:
+    <<: *defaults
+    steps:
+      - restore_cache:
+          keys:
+            - v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-{{ .Revision }}
+            - v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-
+            - v1-AMSNotificationsControlCenter-RN-
+
+      - checkout
+
+      - save_cache:
+          key: v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-{{ .Revision }}
+          paths:
+            - .git
+
+      - run:
+          name: NPM Login
+          command: npx npm-shell-login
+
+      - restore_cache:
+          keys:
+            - v1-npm-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install npm dependencies
+          command: yarn
+
+      - save_cache:
+          key: v1-npm-{{  checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+      - run:
+          name: Linting
+          command: npm run lint
+
+      - run:
+          name: Test coverage
+          command: npm run test -- --coverage
+
+      - persist_to_workspace:
+          <<: *persisted_folders
+
+      - run:
+          name: Install python tools
+          command: sudo apt-get install python-setuptools python-dev
+
+      - run:
+          name: Install pip
+          command: sudo easy_install pip
+
+      - run:
+          name: Install awscli
+          command: sudo pip install awscli
+
+      - run:
+          name: Create temp folders
+          command: mkdir -p tmp/build/ios && mkdir -p tmp/build/android
+
+      - deploy:
+          name: S3 Bundle deployment
+          command: bash .circleci/deploy.sh ${CIRCLE_BRANCH}
