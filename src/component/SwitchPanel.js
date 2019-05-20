@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Switch, StyleSheet } from 'react-native';
+import { View, Switch, StyleSheet, ViewPropTypes } from 'react-native';
 import { SafeText as Text } from '@applicaster/london-rn-components';
 import PropTypes from 'prop-types';
 
@@ -28,14 +28,32 @@ const styles = StyleSheet.create({
   }
 });
 
-const SwitchPanel = ({ name, switchStatus, isLast, id, onStateChange }) => {
+const SwitchPanel = (
+  {
+    name,
+    switchStatus,
+    isLast,
+    id,
+    onStateChange,
+    contentContainerStyle,
+    disabled
+  },
+  { globalPush }
+) => {
   return (
-    <View style={[styles.container, isLast && { borderBottomWidth: 0 }]}>
+    <View
+      style={[
+        styles.container,
+        isLast && { borderBottomWidth: 0 },
+        contentContainerStyle
+      ]}
+    >
       <Text style={styles.name}>{name}</Text>
       <Switch
         onTintColor={'rgb(222, 20, 10)'}
         style={styles.switch}
         value={switchStatus}
+        disabled={disabled !== undefined ? disabled : !globalPush}
         onValueChange={newState => onStateChange(newState, id)}
       />
     </View>
@@ -47,7 +65,9 @@ SwitchPanel.propTypes = {
   switchStatus: PropTypes.bool,
   isLast: PropTypes.bool,
   id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onStateChange: PropTypes.func.isRequired
+  onStateChange: PropTypes.func.isRequired,
+  contentContainerStyle: ViewPropTypes.style,
+  disabled: PropTypes.bool
 };
 
 SwitchPanel.defaultProps = {
@@ -55,6 +75,10 @@ SwitchPanel.defaultProps = {
   isLast: false,
   name: '',
   id: 1
+};
+
+SwitchPanel.contextTypes = {
+  globalPush: PropTypes.bool
 };
 
 export default SwitchPanel;

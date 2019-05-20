@@ -15,7 +15,6 @@ export const unregisterTags = async tags => {
     JSON.parse
   )(registeredTags);
   await AsyncStorage.setItem(storageKey, newTags);
-
   return JSON.parse(newTags);
 };
 
@@ -38,4 +37,18 @@ export const getRegisteredTags = async () => {
     return [];
   }
   return JSON.parse(registeredTags);
+};
+
+export const setGlobalPushStatus = async newSetting => {
+  await AsyncStorage.setItem('globalPushSetting', String(newSetting));
+  return newSetting;
+};
+
+export const getGlobalPushStatus = async () => {
+  const newSetting = await AsyncStorage.getItem('globalPushSetting');
+  if (!newSetting) {
+    await AsyncStorage.setItem('globalPushSetting', 'true');
+    return true;
+  }
+  return newSetting !== 'false';
 };

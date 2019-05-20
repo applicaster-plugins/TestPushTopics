@@ -14,10 +14,11 @@ const Section = ({
   topicsList,
   groupName,
   onStateChange,
-  subscribedTopics
+  subscribedTopics,
+  isFirst
 }) => {
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, isFirst && { marginTop: 20 }]}>
       <GroupHeader>{groupName}</GroupHeader>
       <TopicsGroup {...{ topicsList, onStateChange, subscribedTopics }} />
     </View>
@@ -28,7 +29,8 @@ Section.propTypes = {
   groupName: PropTypes.string,
   topicsList: PropTypes.array.isRequired,
   onStateChange: PropTypes.func.isRequired,
-  subscribedTopics: PropTypes.array.isRequired
+  subscribedTopics: PropTypes.array.isRequired,
+  isFirst: PropTypes.bool
 };
 
 Section.defaultProps = {

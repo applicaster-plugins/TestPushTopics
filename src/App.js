@@ -6,8 +6,11 @@ import { SafeText as Text } from '@applicaster/london-rn-components';
 import {
   getRegisteredTags,
   unregisterTags,
-  registerTags
+  registerTags,
+  setGlobalPushStatus,
+  getGlobalPushStatus
 } from './notifications';
+import SwitchPanel from './component/SwitchPanel';
 import Section from './component/Section';
 import LoadingScreen from './component/LoadingScreen';
 import FullScreenCentered from './component/FullScreenCentered';
@@ -26,15 +29,18 @@ class App extends Component {
     this.state = {
       topicGroups: null,
       subscribedTopics: [],
-      err: null
+      err: null,
+      globalPush: null
     };
 
     this.onStateChange = this.onStateChange.bind(this);
+    this.onGlobalPushStateChange = this.onGlobalPushStateChange.bind(this);
   }
 
   getChildContext() {
     const { is_tablet: isTablet } = this.props;
-    return { isTablet };
+    const { globalPush } = this.state;
+    return { isTablet, globalPush };
   }
 
   componentDidCatch(error) {
@@ -44,6 +50,15 @@ class App extends Component {
   componentDidMount() {
     this.getTopicsList();
     this.getRegisteredTagsList();
+    this.getGlobalPushStatus();
+  }
+
+  async getGlobalPushStatus() {
+    const globalPush = await getGlobalPushStatus().catch(err => {
+      this.setState({ err: err.message });
+    });
+    console.log(globalPush);
+    this.setState({ globalPush });
   }
 
   async getTopicsList() {
@@ -78,9 +93,36 @@ class App extends Component {
     }
   }
 
+  async onGlobalPushStateChange(enabled) {
+    if (!enabled) {
+      const subscribedTopics = await unregisterTags(
+        this.state.subscribedTopics
+      );
+      this.setState({ subscribedTopics });
+    }
+    this.setState({ globalPush: enabled });
+    setGlobalPushStatus(enabled);
+  }
+
+  renderText(text) {
+    return (
+      <Text
+        style={{
+          fontSize: 14,
+          color: 'rgb(145, 145, 145)',
+          fontFamily: 'OpenSans',
+          textAlign: 'left',
+          paddingHorizontal: 20
+        }}
+      >
+        {text}
+      </Text>
+    );
+  }
+
   render() {
     const { is_tablet: isTablet } = this.props;
-    const { topicGroups, subscribedTopics, err } = this.state;
+    const { topicGroups, subscribedTopics, err, globalPush } = this.state;
     if (err) {
       return (
         <FullScreenCentered>
@@ -88,16 +130,38 @@ class App extends Component {
         </FullScreenCentered>
       );
     }
-    if (!topicGroups || !subscribedTopics) {
+    if (!topicGroups || !subscribedTopics || globalPush === null) {
       return <LoadingScreen />;
     }
     return (
       <View style={[styles.container, isTablet && styles.containerTablet]}>
-        <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: 40 }}>
-          {topicGroups.map(group => (
+        <ScrollView
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingBottom: 40,
+            paddingTop: 40
+          }}
+        >
+          {this.renderText(
+            'Du kannst deine Push-Meldungen hier ein- und ausschalten.'
+          )}
+          <SwitchPanel
+            contentContainerStyle={{
+              marginLeft: 0,
+              paddingLeft: 20,
+              marginVertical: 20
+            }}
+            name={'Push-Meldungen'}
+            switchStatus={globalPush}
+            onStateChange={this.onGlobalPushStateChange}
+            disabled={false}
+          />
+          {this.renderText('Hier kannst du deine Push-Favoriten festlegen.')}
+          {topicGroups.map((group, i) => (
             <Section
               key={group.idPrefix}
               {...{
+                isFirst: i === 0,
                 topicsList: group.topics,
                 groupName: group.title,
                 onStateChange: this.onStateChange,
@@ -116,7 +180,8 @@ App.propTypes = {
 };
 
 App.childContextTypes = {
-  isTablet: PropTypes.bool
+  isTablet: PropTypes.bool,
+  globalPush: PropTypes.bool
 };
 
 export default App;
