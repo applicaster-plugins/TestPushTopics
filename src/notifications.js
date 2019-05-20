@@ -7,7 +7,7 @@ const { PushNotifications } = NativeModules;
 const storageKey = 'registeredTags';
 
 export const unregisterTags = async tags => {
-  PushNotifications.unregisterTags(tags);
+  await PushNotifications.unregisterTags(tags).catch(console.log);
   const registeredTags = await AsyncStorage.getItem(storageKey);
   const newTags = compose(
     JSON.stringify,
@@ -19,7 +19,7 @@ export const unregisterTags = async tags => {
 };
 
 export const registerTags = async tags => {
-  await PushNotifications.registerTags(tags);
+  await PushNotifications.registerTags(tags).catch(console.log);
   const registeredTags = await AsyncStorage.getItem(storageKey);
   const newTags = compose(
     JSON.stringify,
