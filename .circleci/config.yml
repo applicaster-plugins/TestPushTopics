@@ -1,12 +1,12 @@
 defaults: &defaults
-  working_directory: ~/AMSNotificationsControlCenter-RN
+  working_directory: ~/TestPushTopics
   docker:
     - image: applicaster/zapp-node:0.4
 
 persisted_folders: &persisted_folders
   root: ~/
   paths:
-    - AMSNotificationsControlCenter-RN/*
+    - TestPushTopics/*
 
 version: 2
 jobs:
@@ -15,14 +15,14 @@ jobs:
     steps:
       - restore_cache:
           keys:
-            - v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-{{ .Revision }}
-            - v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-
-            - v1-AMSNotificationsControlCenter-RN-
+            - v1-TestPushTopics-{{ .Branch }}-{{ .Revision }}
+            - v1-TestPushTopics-{{ .Branch }}-
+            - v1-TestPushTopics-
 
       - checkout
 
       - save_cache:
-          key: v1-AMSNotificationsControlCenter-RN-{{ .Branch }}-{{ .Revision }}
+          key: v1-TestPushTopics-{{ .Branch }}-{{ .Revision }}
           paths:
             - .git
 

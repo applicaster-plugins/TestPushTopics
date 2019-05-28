@@ -1,5 +1,5 @@
 {
-  "name": "@applicaster/ams-notifications-control-center",
+  "name": "@applicaster/TestPushTopics",
   "version": "0.1.0",
   "description": "React-Native Component displaying notifications control screen",
   "main": "./export.js",
@@ -19,11 +19,11 @@
     "build:staging:ios": "react-native bundle --platform ios --dev true --entry-file index.ios.js --bundle-output tmp/build/ios/index.ios.bundle.js",
     "build:staging:android": "react-native bundle --platform android --dev true --entry-file index.android.js --bundle-output tmp/build/android/index.android.bundle.js",
     "deploy": "npm run deploy:ios && npm run deploy:android",
-    "deploy:ios": "npm run build:ios && aws s3 sync tmp/build/ios s3://assets-production.applicaster.com/zapp/react-native-bundles/AMSNotificationsControlCenter-RN/0_50_4/0.1.0/ios --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
-    "deploy:android": "npm run build:android && aws s3 sync tmp/build/android s3://assets-production.applicaster.com/zapp/react-native-bundles/AMSNotificationsControlCenter-RN/0_50_4/0.1.0/android --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+    "deploy:ios": "npm run build:ios && aws s3 sync tmp/build/ios s3://assets-production.applicaster.com/zapp/react-native-bundles/TestPushTopics/0_50_4/0.1.0/ios --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+    "deploy:android": "npm run build:android && aws s3 sync tmp/build/android s3://assets-production.applicaster.com/zapp/react-native-bundles/TestPushTopics/0_50_4/0.1.0/android --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
     "deploy:staging": "npm run deploy:staging:ios && npm run deploy:staging:android",
-    "deploy:staging:ios": "npm run build:staging:ios && aws s3 sync tmp/build/ios s3://assets-staging.applicaster.com/zapp/react-native-bundles/staging/AMSNotificationsControlCenter-RN/0_50_4/0.1.0/ios --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
-    "deploy:staging:android": "npm run build:staging:android && aws s3 sync tmp/build/android s3://assets-staging.applicaster.com/zapp/react-native-bundles/AMSNotificationsControlCenter-RN/0_50_4/0.1.0/android --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers"
+    "deploy:staging:ios": "npm run build:staging:ios && aws s3 sync tmp/build/ios s3://assets-staging.applicaster.com/zapp/react-native-bundles/staging/TestPushTopics/0_50_4/0.1.0/ios --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers",
+    "deploy:staging:android": "npm run build:staging:android && aws s3 sync tmp/build/android s3://assets-staging.applicaster.com/zapp/react-native-bundles/TestPushTopics/0_50_4/0.1.0/android --region us-east-1 --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers"
   },
   "repository": {
     "type": "git",
@@ -32,9 +32,9 @@
   "author": "Applicaster",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/applicaster/AMSNotificationsControlCenter-RN/issues"
+    "url": "https://github.com/applicaster/TestPushTopics/issues"
   },
-  "homepage": "https://github.com/applicaster/AMSNotificationsControlCenter-RN#readme",
+  "homepage": "https://github.com/applicaster/TestPushTopics#readme",
   "dependencies": {
     "@applicaster/london-rn-components": "^1.11.1",
     "axios": "^0.17.1",
