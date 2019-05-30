@@ -1,0 +1,216 @@
+[
+    {
+        "title": "category one",
+        "idPrefix": "category-one",
+        "topics": [
+            {
+                "title": "smallCars",
+                "topicId": "category-one-smallCars",
+                "treeIds": [
+                    53764
+                ]
+            },
+            {
+                "title": "compact",
+                "topicId": "category-one-compact",
+                "treeIds": [
+                    53764
+                ]
+            },
+            {
+                "title": "midRange",
+                "topicId": "category-one-midRange",
+                "treeIds": [
+                    53785
+                ]
+            },
+            {
+                "title": "SUV",
+                "topicId": "category-one-suv",
+                "treeIds": [
+                    53815
+                ]
+            },
+            {
+                "title": "Van",
+                "topicId": "category-one-van",
+                "treeIds": [
+                    53825
+                ]
+            }
+        ]
+    },
+    {
+        "title": "category two",
+        "idPrefix": "category-two",
+        "topics": [
+            {
+                "title": "novelty",
+                "topicId": "category-two-novelty",
+                "treeIds": [
+                    53766,
+                    53776,
+                    53786,
+                    53816,
+                    53796,
+                    53806,
+                    53826,
+                    53836
+                ]
+            },
+            {
+                "title": "drivingTests",
+                "topicId": "category-two-drivingTests",
+                "treeIds": [
+                    53768,
+                    53778,
+                    53788,
+                    53818,
+                    53798,
+                    53808,
+                    53828,
+                    53838,
+                    42701
+                ]
+            },
+            {
+                "title": "Tests",
+                "topicId": "category-two-tests",
+                "treeIds": [
+                    53769,
+                    53779,
+                    53789,
+                    53819,
+                    53799,
+                    53809,
+                    53829
+                ]
+            },
+            {
+                "title": "Tuning",
+                "topicId": "category-two-tuning",
+                "treeIds": [
+                    53772,
+                    53782,
+                    53822,
+                    53802,
+                    53812,
+                    53832,
+                    53842,
+                    53792
+                ]
+            },
+            {
+                "title": "E-Car",
+                "topicId": "category-two-ecar",
+                "treeIds": [
+                    53773,
+                    53778,
+                    53793,
+                    53823,
+                    53803,
+                    53833,
+                    53843,
+                    53813
+                ]
+            },
+            {
+                "title": "accessories",
+                "topicId": "category-two-accessories",
+                "treeIds": [
+                    53847
+                ]
+            },
+            {
+                "title": "mobile services",
+                "topicId": "category-two-mobileservices",
+                "treeIds": [
+                    53855
+                ]
+            },
+            {
+                "title": "Startups",
+                "topicId": "category-two-startups",
+                "treeIds": [
+                    53856
+                ]
+            },
+            {
+                "title": "formula 1",
+                "topicId": "category-two-formula1",
+                "treeIds": [
+                    9583
+                ]
+            }
+        ]
+    },
+    {
+        "title": "category three",
+        "idPrefix": "category-three",
+        "topics": [
+            {
+                "title": "Audi",
+                "topicId": "category-three-audi",
+                "treeIds": [
+                    10
+                ]
+            },
+            {
+                "title": "BMW",
+                "topicId": "category-three-bmw",
+                "treeIds": [
+                    511
+                ]
+            },
+            {
+                "title": "Mercedes",
+                "topicId": "category-three-mercedes",
+                "treeIds": [
+                    554
+                ]
+            },
+            {
+                "title": "Opel",
+                "topicId": "category-three-opel",
+                "treeIds": [
+                    560
+                ]
+            },
+            {
+                "title": "Porsche",
+                "topicId": "category-three-porsche",
+                "treeIds": [
+                    563
+                ]
+            },
+            {
+                "title": "Renault",
+                "topicId": "category-three-renault",
+                "treeIds": [
+                    566
+                ]
+            },
+            {
+                "title": "Skoda",
+                "topicId": "category-three-skoda",
+                "treeIds": [
+                    572
+                ]
+            },
+            {
+                "title": "Toyota",
+                "topicId": "category-three-toyota",
+                "treeIds": [
+                    578
+                ]
+            },
+            {
+                "title": "VW",
+                "topicId": "category-three-vw",
+                "treeIds": [
+                    581
+                ]
+            }
+        ]
+    }
+]
