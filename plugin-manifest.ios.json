@@ -35,6 +35,11 @@
       "type": "text",
       "key": "backgroundViewColor",
       "tooltip_text": "Background color when the view is loading"
+    },
+    {
+      "type": "text",
+      "key": "topicsURL",
+      "tooltip_text": "URL end point for loading the topics data."
     }
   ]
 }
