@@ -14,6 +14,9 @@ import SwitchPanel from './component/SwitchPanel';
 import Section from './component/Section';
 import LoadingScreen from './component/LoadingScreen';
 import FullScreenCentered from './component/FullScreenCentered';
+import { NativeModules } from 'react-native';
+
+const { ZappPlugin } = NativeModules;
 
 const styles = StyleSheet.create({
   container: {
@@ -48,6 +51,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    this.getZappPlugingConfiguration();
     this.getTopicsList();
     this.getRegisteredTagsList();
     this.getGlobalPushStatus();
@@ -61,9 +65,15 @@ class App extends Component {
     this.setState({ globalPush });
   }
 
+  async getZappPlugingConfiguration() {
+    ZappPlugin.getConfiguration('TestPushTopics').then( ({ topicsURL }) => {
+      this.setState({ topicsURL: topicsURL});
+    });
+  }
+  
   async getTopicsList() {
     const { data: topicGroups } = await axios
-      .get('https://www.auto-motor-und-sport.de/api/newsapp/getGroups')
+      .get(topicsURL)
       .catch(err => {
         this.setState({ err: err.message });
       });
@@ -143,7 +153,7 @@ class App extends Component {
           }}
         >
           {this.renderText(
-            'Du kannst deine Push-Meldungen hier ein- und ausschalten.'
+            'You can turn your push notifications on and off here.'
           )}
           <SwitchPanel
             contentContainerStyle={{
@@ -151,12 +161,12 @@ class App extends Component {
               paddingLeft: 20,
               marginVertical: 20
             }}
-            name={'Push-Meldungen'}
+            name={'Push-Messages'}
             switchStatus={globalPush}
             onStateChange={this.onGlobalPushStateChange}
             disabled={false}
           />
-          {this.renderText('Hier kannst du deine Push-Favoriten festlegen.')}
+          {this.renderText('Here you can set your push favorites.')}
           {topicGroups.map((group, i) => (
             <Section
               key={group.idPrefix}
