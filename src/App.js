@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView , NativeModules } from 'react-native';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { SafeText as Text } from '@applicaster/london-rn-components';
@@ -14,7 +14,6 @@ import SwitchPanel from './component/SwitchPanel';
 import Section from './component/Section';
 import LoadingScreen from './component/LoadingScreen';
 import FullScreenCentered from './component/FullScreenCentered';
-import { NativeModules } from 'react-native';
 
 const { ZappPlugin } = NativeModules;
 
@@ -31,6 +30,7 @@ class App extends Component {
     super(props);
     this.state = {
       topicGroups: null,
+      topicGroupsURL: null,
       subscribedTopics: [],
       err: null,
       globalPush: null
@@ -66,14 +66,14 @@ class App extends Component {
   }
 
   async getZappPlugingConfiguration() {
-    ZappPlugin.getConfiguration('TestPushTopics').then( ({ topicsURL }) => {
-      this.setState({ topicsURL: topicsURL});
+    this.topicGroupsURL = await ZappPlugin.getConfiguration('TestPushTopics').then( ({ topicsURL }) => {
+      this.setState({ topicGroupsURL: topicsURL});
     });
   }
   
   async getTopicsList() {
     const { data: topicGroups } = await axios
-      .get(topicsURL)
+      .get(this.topicGroupsURL)
       .catch(err => {
         this.setState({ err: err.message });
       });
