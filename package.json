@@ -1,5 +1,5 @@
 {
-  "name": "@applicaster/TestPushTopics",
+  "name": "@applicaster/testpushtopics",
   "version": "0.1.0",
   "description": "React-Native Component displaying notifications control screen",
   "main": "./export.js",
