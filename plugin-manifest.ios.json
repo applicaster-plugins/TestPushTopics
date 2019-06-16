@@ -20,7 +20,7 @@
   "ui_builder_support": true,
   "react_native": true,
   "screen": true,
-  "react_bundle_url": "https://assets-production.applicaster.com/zapp/react-native-bundles/TestPushTopics/0_50_4/0.1.0/ios/index.ios.bundle.js",
+  "react_bundle_url": "https://assets-production.applicaster.com/zapp/react-native-bundles/TestPushTopics/0_50_4/0_1_1/ios/index.ios.bundle.js",
   "extra_dependencies": [],
   "npm_dependencies": [],
   "project_dependencies": [],
