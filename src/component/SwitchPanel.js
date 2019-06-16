@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgb(224, 224, 224)'
   },
   name: {
-    fontFamily: 'OpenSans-Semibold',
     lineHeight: 20,
     fontSize: 14,
     color: 'rgb(51, 51, 51)',

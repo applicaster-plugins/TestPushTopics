@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 const styles = StyleSheet.create({
   name: {
-    fontFamily: 'OpenSans-Bold',
     lineHeight: 20,
     fontSize: 15,
     color: 'rgb(51, 51, 51)',
