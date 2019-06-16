@@ -1,7 +1,7 @@
 {
   "name": "@applicaster/testpushtopics",
   "version": "0.1.1",
-  "description": "React-Native Component displaying notifications control screen",
+  "description": "Zapp screen plugin for displaying push notifications topic screen, was built for testing and as react-native screen plugin example.",
   "main": "./export.js",
   "engine": {
     "node": "8.9.0",
@@ -31,14 +31,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/applicaster/AMSNotificationsControlCenter"
+    "url": "git+https://github.com/applicaster-plugins/TestPushTopics"
   },
   "author": "Applicaster",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/applicaster/TestPushTopics/issues"
+    "url": "https://github.com/applicaster-plugins/TestPushTopics/issues"
   },
-  "homepage": "https://github.com/applicaster/TestPushTopics#readme",
+  "homepage": "https://github.com/applicaster-plugins/TestPushTopics#readme",
   "dependencies": {
     "@applicaster/london-rn-components": "^1.11.1",
     "axios": "^0.17.1",
