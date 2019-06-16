@@ -50,8 +50,8 @@ class App extends Component {
     this.setState({ err: error.message });
   }
 
-  componentDidMount() {
-    this.getZappPlugingConfiguration();
+  async componentDidMount() {
+    await this.getZappPlugingConfiguration();
     this.getTopicsList();
     this.getRegisteredTagsList();
     this.getGlobalPushStatus();
@@ -61,19 +61,18 @@ class App extends Component {
     const globalPush = await getGlobalPushStatus().catch(err => {
       this.setState({ err: err.message });
     });
-    console.log(globalPush);
     this.setState({ globalPush });
   }
 
   async getZappPlugingConfiguration() {
-    this.topicGroupsURL = await ZappPlugin.getConfiguration('TestPushTopics').then( ({ topicsURL }) => {
-      this.setState({ topicGroupsURL: topicsURL});
+    await ZappPlugin.getConfiguration('TestPushTopics').then(PLUGIN_CONFIGURATION => {
+      this.setState({ topicGroupsURL: PLUGIN_CONFIGURATION.topicsURL});
     });
   }
   
   async getTopicsList() {
     const { data: topicGroups } = await axios
-      .get(this.topicGroupsURL)
+      .get(this.state.topicGroupsURL)
       .catch(err => {
         this.setState({ err: err.message });
       });
@@ -120,7 +119,6 @@ class App extends Component {
         style={{
           fontSize: 14,
           color: 'rgb(145, 145, 145)',
-          fontFamily: 'OpenSans',
           textAlign: 'left',
           paddingHorizontal: 20
         }}
