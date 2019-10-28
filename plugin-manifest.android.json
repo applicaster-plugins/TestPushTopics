@@ -8,7 +8,7 @@
   "platform": "android",
   "author_name": "Udi Lumnitz",
   "author_email": "u.lumnitz@applicaster.com",
-  "manifest_version": "0.1.1",
+  "manifest_version": "0.1.2",
   "name": "TestPushTopics",
   "description": "This plugin is used to display notification controls for testing registration for push topics with different push providers.",
   "type": "general",

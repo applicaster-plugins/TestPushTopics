@@ -1,6 +1,6 @@
 {
   "name": "@applicaster/testpushtopics",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Zapp screen plugin for displaying push notifications topic screen, was built for testing and as react-native screen plugin example.",
   "main": "./export.js",
   "engine": {
@@ -12,7 +12,7 @@
     "folder_name": "TestPushTopics"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "jest": "jest",
     "lint": "eslint .",
     "start": "node node_modules/react-native/local-cli/cli.js start",
