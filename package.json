@@ -42,7 +42,7 @@
   "homepage": "https://github.com/applicaster-plugins/TestPushTopics#readme",
   "dependencies": {
     "@applicaster/london-rn-components": "^1.11.1",
-    "axios": "^0.17.1",
+    "axios": "^0.18.1",
     "prop-types": "^15.7.2",
     "ramda": "^0.25.0"
   },
