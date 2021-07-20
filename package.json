@@ -67,7 +67,7 @@
     "metro-react-native-babel-preset": "^0.56.3",
     "react": "16.8.3",
     "react-dom": "16.4.1",
-    "react-native": "0.59.10",
+    "react-native": "0.62.3",
     "react-native-zapp-bridge": "2.7.4",
     "react-test-renderer": "^16.8.6",
     "reactotron-react-js": "^1.12.2",
@@ -76,7 +76,7 @@
   },
   "peerDependencies": {
     "react": "16.8.3",
-    "react-native": "0.59.10",
+    "react-native": "0.62.3",
     "react-native-zapp-bridge": "2.7.4"
   },
   "jest": {
